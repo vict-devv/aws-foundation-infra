@@ -21,7 +21,6 @@ FROM scratch
 WORKDIR /
 
 COPY --from=builder /app/cloud-api /cloud-api
-COPY --from=builder /app/.env /.env
 
 # Best Practice: Run as a non-root user (security)
 # Since scratch has no /etc/passwd, we use a numeric UID

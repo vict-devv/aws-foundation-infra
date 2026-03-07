@@ -5,16 +5,10 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/victor-devv/cloud-native-api/internal/health"
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	registerRoutes()
 
 	port := serverPort()
