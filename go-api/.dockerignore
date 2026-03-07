@@ -1,0 +1,8 @@
+.git/
+.vscode/
+Dockerfile
+vendor/
+bin/
+*.exe
+*.test
+*.log
