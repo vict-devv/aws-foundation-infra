@@ -1,6 +1,11 @@
 resource "aws_ecr_repository" "cloud-api" {
   name                 = var.api_ecr_repository_name
-  image_tag_mutability = "IMMUTABLE"
+  image_tag_mutability = "IMMUTABLE_WITH_EXCLUSION"
+
+  image_tag_mutability_exclusion_filter {
+    filter_type = "WILDCARD"
+    filter      = "latest"
+  }
 
   image_scanning_configuration {
     scan_on_push = true
@@ -15,12 +20,12 @@ resource "aws_ecr_lifecycle_policy" "cloud_api_policy" {
       {
         rulePriority = 1
         description  = "Keep only the last 5 images"
-        selection    = {
-          tagStatus    = "any"
-          countType    = "imageCountMoreThan"
-          countNumber  = 5
+        selection = {
+          tagStatus   = "any"
+          countType   = "imageCountMoreThan"
+          countNumber = 5
         }
-        action       = {
+        action = {
           type = "expire"
         }
       }
