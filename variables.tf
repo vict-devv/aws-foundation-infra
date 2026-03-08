@@ -4,6 +4,12 @@ variable "project_name" {
   default     = "victor-portfolio"
 }
 
+variable "aws_region" {
+  description = "The AWS region to deploy resources in"
+  type        = string
+  default     = "ca-central-1"
+}
+
 variable "cidr_block" {
   description = "The CIDR block for the VPC"
   type        = string
