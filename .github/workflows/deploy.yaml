@@ -3,6 +3,8 @@ name: Build and Push to ECR
 on:
   push:
     branches: ["main"]
+    paths:
+      - "go-api/**" # Trigger only when changes are made in the go-api directory
 
 permissions:
   id-token: write # Required for OIDC
